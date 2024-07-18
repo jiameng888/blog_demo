@@ -2,6 +2,7 @@ package com.blog.model.post.mapper;
 
 
 import com.blog.model.post.entity.Posts;
+import com.blog.model.post.entity.PostsPageQuery;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface PostsMapper {
     int addPost(Posts posts);
 
-    List<Posts> findAllPostByUserId(Integer userId);
+    List<Posts> findAllPostByUserId(Integer userId, PostsPageQuery pageQuery);
 
     Posts findPostByPostId(Integer postId);
 

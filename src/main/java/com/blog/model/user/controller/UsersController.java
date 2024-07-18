@@ -27,8 +27,8 @@ public class UsersController {
     }
 
     @PostMapping("/login")
-    public ApiResponse userLogin(HttpSession session, String userName, String password) {
-        Users user = usersService.findUserByUserNameAndPassword(userName, password);
+    public ApiResponse userLogin(HttpSession session, String username, String password) {
+        Users user = usersService.findUserByUserNameAndPassword(username, password);
         if (user == null) {
             return ApiResponse.error(AppExceptionCodeMsg.USER_NOT_EXIST);
         }

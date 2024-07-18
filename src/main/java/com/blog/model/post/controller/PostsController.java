@@ -4,7 +4,9 @@ import com.blog.common.apiresult.ApiResponse;
 import com.blog.common.apiresult.AppExceptionCodeMsg;
 import com.blog.common.utils.TokenUtil;
 import com.blog.model.post.entity.Posts;
+import com.blog.model.post.entity.PostsPageQuery;
 import com.blog.model.post.service.PostsService;
+import com.github.pagehelper.PageInfo;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -35,14 +37,17 @@ public class PostsController {
     }
 
     /**
-     * 查询所有文章通过文章ID
+     * 查询所有文章通过用户ID
      *
      * @param uid
      * @return
      */
     @GetMapping("")
     public ApiResponse findAllPostByUserId(Integer uid) {
-        List<Posts> allPostByUserId = postsService.findAllPostByUserId(uid);
+        PostsPageQuery postsPageQuery = new PostsPageQuery();
+        postsPageQuery.setPageNum(1);
+        postsPageQuery.setPageSize(5);
+        PageInfo<Posts> allPostByUserId = postsService.findAllPostByUserId(uid,postsPageQuery);
         return ApiResponse.success(allPostByUserId);
     }
 
