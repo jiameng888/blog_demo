@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: blog_demo
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/blog_demo?serverTimezone=Asia/Shanghai
+    username: jm
+    password: jm123456!
+  mvc:
+    servlet:
+      path: /api
+
+server:
+  port: 8888
+
+mybatis:
+  mapper-locations: classpath:mappers/*.xml
